@@ -1,5 +1,5 @@
 ## Conky
-<img src='https://github.com/alexbel/dotfiles/tree/master/.conky/1366x768.png' width='800' alt="Screenshot">
+<img src='1366x768.png' width='300px'>
 
 ## Installation
 - rename secrets.yml.example to secrets.yml and put your data in it  
