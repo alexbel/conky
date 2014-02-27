@@ -1,0 +1,17 @@
+#!/bin/bash
+if ps aux | grep -vE 'grep|bash' | grep conky >/dev/null;then
+  echo 'exit';
+else
+  #if xrandr | grep "*" | grep 1920
+  #then
+    # I have a second monitor 1920*1080. So, set conky config according to new resolution
+    #conky -x 1590 -c ~/.conky/network.conkyrc &
+    #conky -x 1590 -c ~/.conky/weather.conkyrc &
+    #conky -c ~/.conky/logs.conkyrc &
+  #else
+  (sleep 3s && conky -c ~/.conky/network.conkyrc) &
+  (sleep 3s && conky -c ~/.conky/weather.conkyrc) &
+  #fi
+    conky -c ~/.conky/info.conkyrc &
+    conky -c ~/.conky/sys.conkyrc & exit;
+fi

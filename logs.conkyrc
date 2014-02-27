@@ -1,0 +1,106 @@
+# conky configuration
+
+# set to yes if you want Conky to be forked in the background
+background no
+
+# X font when Xft is disabled, you can pick one with program xfontsel
+#font 5x7
+#font 6x10
+#font 7x13
+#font 8x13
+#font 9x15
+#font *mintsmild.se*
+#font -*-*-*-*-*-*-34-*-*-*-*-*-*-*
+
+# Use Xft?
+use_xft yes
+
+# Xft font when Xft is enabled
+xftfont Liberation Mono:bold:size=10
+
+# Text alpha when using Xft
+xftalpha 1
+
+# Update interval in seconds
+update_interval 5
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 450 0
+maximum_width 1600
+
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+draw_graph_borders yes
+
+# Stippled borders?
+stippled_borders 8
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color white
+default_shade_color black
+default_outline_color white
+
+# own window options
+own_window		yes
+own_window_transparent	yes
+own_window_type normal
+own_window_hints	undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual yes
+
+# Text alignment, other possible values are commented
+#alignment top_left
+#alignment top_right
+alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 15
+gap_y 40
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+#cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+#net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer right
+
+
+color0 467f77 		# Light blue
+text_buffer_size 2048
+
+# variable is given either in format $variable or in ${variable}. Latter
+# allows characters right after the variable and must be used in network
+# stuff because of an argument
+# stuff after 'TEXT' will be formatted on screen
+TEXT
+${color0}/var/log/messages
+${color grey60}${exec tail -n 5 /var/log/messages | fold -w210}

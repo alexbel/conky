@@ -1,0 +1,83 @@
+# Use Xft?
+use_xft yes
+xftfont cure:size=6
+
+# Update interval in seconds
+update_interval 10
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_transparent yes
+own_window_type normal
+own_window_hints undecorate,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual yes
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 300 0
+maximum_width 350
+
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+stippled_borders 0
+
+border_width 0
+
+# Default colors and also border colors
+default_color 303030
+#default_shade_color white
+#default_outline_color black
+own_window_colour 262524
+
+# Text alignment, other possible values are commented
+alignment top_left
+#alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 15
+gap_y 7
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer right
+
+color0 467f77 		# Light blue
+
+TEXT
+${font Liberation Mono:bold:size=10}${color0}${goto 0}Kernel: ${color grey60}$kernel
+${color0}${goto 0}Uptime: ${color grey60}$uptime
+${color0}${goto 0}Updates available: ${color grey60}${execi 3600 zypper list-updates -t package | grep "v |" | wc -l}
+${color0}${goto 0}Time local: ${color grey60}${execi 30 date +"%H:%M"}
+${goto 32}${color0}Moscow: ${color grey60}${execi 30 TZ=Europe/Moscow date +"%H:%M"}
+${color0}${goto 0}Load: ${color grey60}$loadavg

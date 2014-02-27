@@ -1,0 +1,127 @@
+# conky configuration
+# edited by Mark Buck (Kaivalagi) <m_buck@hotmail.com>
+
+# set to yes if you want Conky to be forked in the background
+background no
+
+# X font when Xft is disabled, you can pick one with program xfontsel
+#font 5x7
+#font 6x10
+#font 7x13
+#font 8x13
+#font 9x15
+#font *mintsmild.se*
+#font -*-*-*-*-*-*-34-*-*-*-*-*-*-*
+
+# Use Xft?
+use_xft yes
+
+# Xft font when Xft is enabled
+xftfont Liberation Mono:bold:size=10
+
+# Text alpha when using Xft
+xftalpha 1
+
+# Update interval in seconds
+update_interval 3
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window no
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 320 0
+maximum_width 320
+
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+draw_graph_borders yes
+
+# Stippled borders?
+stippled_borders 8
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color white
+default_shade_color black
+default_outline_color white
+
+# own window options
+own_window		yes
+own_window_transparent	yes
+own_window_type normal
+own_window_hints	undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual yes
+
+# Text alignment, other possible values are commented
+alignment top_left
+#alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 1100
+gap_y 10
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer right
+
+
+color0 467f77 		# Light blue
+text_buffer_size 2048
+
+# variable is given either in format $variable or in ${variable}. Latter
+# allows characters right after the variable and must be used in network
+# stuff because of an argument
+
+# stuff after 'TEXT' will be formatted on screen
+
+TEXT
+${color0}Public IP: ${color grey60}${execi 3600 curl -s http://checkip.dyndns.org/ | awk '/:/ {print $6}' | cut -d "<" -f1 }
+${color0}Gateway IP: ${color grey60}$gw_ip
+${color0}DNS: ${color grey60}$nameserver
+${if_up wlp3s0}${color0}Wi-fi IP: ${color grey60}${addr wlp3s0}
+${color0}Signal: ${color grey60}${wireless_link_qual_perc wlp3s0}${goto 95}% ${goto 112}${wireless_link_bar wlp3s0}${else}${color0}No wlan0$endif
+${color0}${goto 20}Down speed: ${color grey60}${downspeed wlp3s0} ${goto 200}${color0}Up speed: ${color grey60}${upspeed wlp3s0}
+${color grey60}${downspeedgraph wlp3s0 12,150 303030 00ff00} ${alignr}${color grey60}${upspeedgraph wlp3s0 12,150 303030 ff0000}
+${color0}Total down: ${color grey60}${totaldown wlp3s0} ${goto 180}${color0}Total up: ${color grey60}${totalup wlp3s0}
+${color0}Activity:  ${hr 2}
+${color0}Inbound connections: ${color grey60}${tcp_portmon 1 32767 count}
+${color0}Outbound connections: ${color grey60}${tcp_portmon 32768 61000 count}
+${color0}Proto  Foreign Address ${goto 250}Name
+${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 1 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 1 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 1 name}
+${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 2 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 2 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 2 name}
+${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 3 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 3 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 3 name}
+${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 4 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 4 address}${goto 230}${execi 3bash ~/.conky/scripts/netstat.sh 4 name}
+${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 5 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 5 address}${goto 230}${execi 3bash ~/.conky/scripts/netstat.sh 5 name}
