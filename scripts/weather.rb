@@ -4,7 +4,7 @@ require 'yaml'
 
 city = 'Carrboro'
 state = 'NC'
-secrets = YAML.load_file(ENV['HOME']+'/.dotfiles/secrets.yml')
+secrets = YAML.load_file(ENV['HOME']+'/.conky/secrets.yml')
  # required by producing your own API key from http://www.wunderground.com/weather/api/
 api_key = secrets['wunderground']['api_key']
 
