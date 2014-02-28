@@ -113,8 +113,8 @@ ${top_mem name 8}${goto 170}${top_mem pid 8}${goto 220}${top_mem cpu 8}${goto 28
 ${voffset 3}${color0}Hard drive  ${hr}
 ${color0}dev${goto 60}write${goto 130}read
 ${voffset 0}${color0}root${goto 60}${color grey60}${diskio_write sdb}${goto 130}${diskio_read sdb}${goto 190}${diskiograph sdb 12,147 467f77 303030 -t -l}
-${voffset 5}${color0}${goto 85}Free${goto 150}Used${goto 215}Size${goto 290}Free
-${color0}root${color grey60}${goto 75}${fs_free /}${goto 140}${fs_used /}${goto 205}${fs_size /}${goto 295}${fs_free_perc /}%${goto 265}${fs_bar 12,72 /}
+${voffset 5}${color0}${goto 85}Free${goto 150}Used${goto 215}Size${goto 290}Used
+${color0}root${color grey60}${goto 75}${fs_free /}${goto 140}${fs_used /}${goto 205}${fs_size /}${goto 295}${fs_used_perc /}%${goto 265}${fs_bar 12,72 /}
 ${color0}home${color grey60}${goto 75}${fs_free /home/al}${goto 140}${fs_used /home/al}${goto 205}${fs_size /home/al}${goto 295}${fs_free_perc /home/al}%${goto 265}${fs_bar 12,72 /home/al}
 ${color0}storage${color grey60}${goto 75}${fs_free /home/al/storage}${goto 140}${fs_used /home/al/storage}${goto 205}${fs_size /home/al/storage}${goto 295}${fs_free_perc /home/al/storage}%${goto 265}${fs_bar 12,72 /home/al/storage}
 ${color0}/tmp${color grey60}${goto 75}${fs_free /tmp}${goto 140}${fs_used /tmp}${goto 205}${fs_size /tmp}${goto 295}${fs_free_perc /tmp}%${goto 265}${fs_bar 12,72 /tmp}
