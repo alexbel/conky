@@ -110,4 +110,4 @@ ${voffset 3}${color grey60}${execpi 3600 VinDSL_Cal_8=`date +%-d`; cal -m | sed 
 ${color0}Gmail: ${hr 2}
 ${color gray60}${goto 20}${execpi 1800 ruby ~/.conky/scripts/gmail.rb} new emails
 
-${execpi 3600 ruby ~/.conky/scripts/weather.rb}
+${execpi 900 ruby ~/.conky/scripts/weather.rb}
