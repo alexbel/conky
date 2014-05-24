@@ -120,7 +120,6 @@ ${color0}storage${color grey60}${goto 75}${fs_free /home/al/storage}${goto 140}$
 ${color0}/tmp${color grey60}${goto 75}${fs_free /tmp}${goto 140}${fs_used /tmp}${goto 205}${fs_size /tmp}${goto 295}${fs_free_perc /tmp}%${goto 265}${fs_bar 12,72 /tmp}
 ${color0}~/tmp${color grey60}${goto 75}${fs_free /home/al/tmp}${goto 140}${fs_used /home/al/tmp}${goto 205}${fs_size /home/al/tmp}${goto 295}${fs_free_perc /home/al/tmp}%${goto 265}${fs_bar 12,72 /home/al/tmp}
 ${voffset 3}${color0}Battery  ${hr}
-${color0}Status: ${color grey60}${execi 60 cat /proc/acpi/battery/BAT0/state | grep "charging state" | awk '{print $3}'} ${goto 190}${battery_bar 10,147 BAT0} ${if_match ${battery_percent BAT0} >= 50 }${goto 255}${color 222222}${battery_percent BAT0}%${color}${endif} ${if_match ${battery_percent BAT0} < 50 }${goto 255}${color0}${battery_percent BAT0}%${color}${endif}
+${color0}Status: ${color grey60}${execi 60 cat /sys/class/power_supply/BAT0/status} ${goto 190}${battery_bar 10,147 BAT0} ${if_match ${battery_percent BAT0} >= 50 }${goto 255}${color 222222}${battery_percent BAT0}%${color}${endif} ${if_match ${battery_percent BAT0} < 50 }${goto 255}${color0}${battery_percent BAT0}%${color}${endif}
 ${color0}Adapter: ${color grey60}${execi 60 acpi -a | awk '{print $3}'}
 ${color0}Time: ${color grey60}${execi 60 acpi | awk '{print $5}' | cut -c1-5 } ${execi 60 acpi | awk '{print $6, $7}'}
-${color0}Rate: ${color grey60}${execi 5 bash $HOME/.conky/scripts/battery.sh}
