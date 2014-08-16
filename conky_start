@@ -2,7 +2,7 @@
 if ps aux | grep -vE 'grep|bash' | grep conky >/dev/null;then
   echo 'exit';
 else
-  sleep 10
+  sleep 15
   conky -c ~/.conky/network.conkyrc &
   conky -c ~/.conky/weather.conkyrc &
   conky -c ~/.conky/info.conkyrc &
