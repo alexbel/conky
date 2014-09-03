@@ -1,6 +1,3 @@
-# conky configuration
-# edited by Mark Buck (Kaivalagi) <m_buck@hotmail.com>
-
 # set to yes if you want Conky to be forked in the background
 background no
 

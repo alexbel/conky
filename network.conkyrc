@@ -1,6 +1,3 @@
-# conky configuration
-# edited by Mark Buck (Kaivalagi) <m_buck@hotmail.com>
-
 # set to yes if you want Conky to be forked in the background
 background no
 
@@ -111,7 +108,8 @@ TEXT
 ${color0}Public IP: ${color grey60}${execi 3600 curl -s http://checkip.dyndns.org/ | awk '/:/ {print $6}' | cut -d "<" -f1 }
 ${color0}Gateway IP: ${color grey60}$gw_ip
 ${color0}DNS: ${color grey60}$nameserver
-${if_up wlp3s0}${color0}Wi-fi IP: ${color grey60}${addr wlp3s0}
+${if_up wlp3s0}${color0}Wi-fi Network: ${color grey60}${wireless_essid wlp3s0}
+${if_up wlp3s0}${color0}Wi-fi Ip: ${color grey60}${addr wlp3s0}
 ${color0}Signal: ${color grey60}${wireless_link_qual_perc wlp3s0}${goto 95}% ${goto 112}${wireless_link_bar wlp3s0}${else}${color0}No wlan0$endif
 ${color0}${goto 20}Down speed: ${color grey60}${downspeed wlp3s0} ${goto 200}${color0}Up speed: ${color grey60}${upspeed wlp3s0}
 ${color grey60}${downspeedgraph wlp3s0 12,150 303030 00ff00} ${alignr}${color grey60}${upspeedgraph wlp3s0 12,150 303030 ff0000}
