@@ -3,7 +3,7 @@
 
 ## Installation
 - rename secrets.yml.example to secrets.yml and put your data in it  
-- run conky_start
+- run 'ruby starter.rb'
 
 ### Dependencies
 Conky libs:  
@@ -16,6 +16,8 @@ Gmail:
   - ruby-gmail
   - mime
   - rest-client
+
+Install gem: gem install gem_name  
 
 Weather:  
   - api_key from http://www.wunderground.com/weather/api/

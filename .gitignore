@@ -1,1 +1,5 @@
 secrets.yml
+info.conkyrc
+sys.conkyrc
+network.conkyrc
+weather.conkyrc
