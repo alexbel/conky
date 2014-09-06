@@ -1,0 +1,18 @@
+# Gap, in pixels, between right or left border of screen, same as passing -x(-y) at command line
+gap_x 7
+gap_y 645
+
+# Minimum size of text area
+minimum_size 330 0
+maximum_width 330
+
+# Update interval in seconds
+update_interval 30
+
+
+# stuff after 'TEXT' will be formatted on screen
+TEXT
+${color0}Battery  ${hr 2}
+${color0}Status: $color${execi 60 cat /sys/class/power_supply/BAT0/status}${font Liberation Mono:bold:size=9} ${goto 190}${battery_bar 10,147 BAT0} ${if_match ${battery_percent BAT0} >= 50 }${goto 255}${color 222222}${battery_percent BAT0}%${color}${endif} ${if_match ${battery_percent BAT0} < 50 }${goto 255}${color0}${battery_percent BAT0}%${color}${endif}
+${font Liberation Mono:bold:size=10}${color0}Adapter: $color${execi 60 acpi -a | awk '{print $3}'}
+${color0}Time: $color${execi 60 acpi | awk '{print $5}' | cut -c1-5 } ${execi 60 acpi | awk '{print $6, $7}'}

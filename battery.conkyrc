@@ -1,0 +1,101 @@
+# Boolean value, if true, Conky will be forked to background when started
+background true
+
+# Use Xft (anti-aliased font and stuff)
+use_xft yes
+
+xftfont Liberation Mono:bold:size=10
+
+# Alpha of Xft font. Must be a value at or between 1 and 0
+xftalpha 1
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_transparent yes
+own_window_type normal
+own_window_hints undecorate,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual yes
+
+# Use the Xdbe extension? (eliminates flicker)
+# It is highly recommended to use own window with this one so double buffer won't be so big
+double_buffer yes
+
+draw_shades no
+
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Border stippling (dashing) in pixels
+stippled_borders 0
+
+# Border width in pixels
+border_width 0
+
+# Draw borders around graphs?
+draw_graph_borders yes
+
+# Default colors and also border colors
+default_color 979797
+#default_shade_color white
+#default_outline_color black
+own_window_colour 262524
+
+# colorN. Predefine a color for use inside TEXT segments.
+# Substitute N by a digit between 0 and 9, inclusively.
+# When specifying the color value in hex, omit the leading hash (#)
+# Light blue
+color0 467f77
+
+# Aligned position on screen, may be top_left, top_right, top_middle, bottom_left, bottom_right, bottom_middle, middle_left, middle_middle, middle_right, or none
+alignment top_left
+
+# Subtract (file system) buffers from used memory?
+no_buffers yes
+
+# Boolean value, if true, text is rendered in upper case
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+# The number of samples to average for CPU monitoring
+cpu_avg_samples 2
+
+# The number of samples to average for net data
+net_avg_samples 2
+
+# Force UTF8? requires XFT
+override_utf8_locale yes
+
+# Adds spaces around certain objects to stop them from moving other things around.
+# Arguments are left, right, and none (default).
+# The old true/false values are deprecated and default to right/none respectively.
+# Note that this only helps if you are using a mono font, such as Bitstream Vera Sans Mono
+use_spacer right
+
+# Size of the standard text buffer (default is 256 bytes).
+# This buffer is used for intermediary text, such as individual lines, output from $exec vars,
+# and various other variables.
+# Increasing the size of this buffer can drastically reduce Conky's performance,
+# but will allow for more text display per variable.
+# The size of this buffer cannot be smaller than the default value of 256 bytes
+text_buffer_size 2048
+# Gap, in pixels, between right or left border of screen, same as passing -x(-y) at command line
+gap_x 7
+gap_y 645
+
+# Minimum size of text area
+minimum_size 330 0
+maximum_width 330
+
+# Update interval in seconds
+update_interval 30
+
+
+# stuff after 'TEXT' will be formatted on screen
+TEXT
+${color0}Battery  ${hr 2}
+${color0}Status: $color${execi 60 cat /sys/class/power_supply/BAT0/status}${font Liberation Mono:bold:size=9} ${goto 190}${battery_bar 10,147 BAT0} ${if_match ${battery_percent BAT0} >= 50 }${goto 255}${color 222222}${battery_percent BAT0}%${color}${endif} ${if_match ${battery_percent BAT0} < 50 }${goto 255}${color0}${battery_percent BAT0}%${color}${endif}
+${font Liberation Mono:bold:size=10}${color0}Adapter: $color${execi 60 acpi -a | awk '{print $3}'}
+${color0}Time: $color${execi 60 acpi | awk '{print $5}' | cut -c1-5 } ${execi 60 acpi | awk '{print $6, $7}'}

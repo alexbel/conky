@@ -6,6 +6,10 @@
 - run 'ruby starter.rb'
 
 ### Dependencies
+Required:  
+  - curl
+  - netstat
+
 Conky libs:  
   - conky-imlib2
 

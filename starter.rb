@@ -2,7 +2,7 @@ class Starter
 
   def initialize
     @base_settings = File.readlines './config/base_settings.conkyrc'
-    @configs = %w[network info weather sys]
+    @configs = %w[battery data_storage network info weather sys]
   end
 
   def run

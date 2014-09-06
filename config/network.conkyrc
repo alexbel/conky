@@ -1,6 +1,6 @@
 # Gap, in pixels, between right or left border of screen, same as passing -x(-y) at command line
 gap_x 1100
-gap_y 10
+gap_y 0
 
 # Minimum size of text area
 minimum_size 320 0
@@ -12,17 +12,11 @@ update_interval 3
 
 # stuff after 'TEXT' will be formatted on screen
 TEXT
-${color0}Public IP: ${color}${execi 3600 curl -s http://checkip.dyndns.org/ | awk '/:/ {print $6}' | cut -d "<" -f1 }
-${color0}Gateway IP: $color$gw_ip
-${color0}DNS: $color$nameserver
-${color0}Wi-fi Network: $color${wireless_essid wlp3s0}
-${color0}Wi-fi Ip: $color${addr wlp3s0}
-${color0}Signal: $color${wireless_link_qual_perc wlp3s0}${goto 95}% ${goto 112}${if_up wlp3s0}${wireless_link_bar wlp3s0}${else}${color0}No wlan0$endif
+${color0}${execpi 300 ruby ./scripts/network_general_info.rb}
 ${color0}${goto 20}Down speed: $color${downspeed wlp3s0} ${goto 200}${color0}Up speed: $color${upspeed wlp3s0}
 $color${downspeedgraph wlp3s0 12,150 303030 00ff00} ${alignr}$color${upspeedgraph wlp3s0 12,150 303030 ff0000}
 ${color0}Total down: $color${totaldown wlp3s0} ${goto 180}${color0}Total up: $color${totalup wlp3s0}
-${color0}Activity:  ${hr 2}
 ${color0}Inbound connections: $color${tcp_portmon 1 32767 count}
 ${color0}Outbound connections: $color${tcp_portmon 32768 61000 count}
 ${color0}Proto  Address ${goto 222}Name${color}${font Liberation Mono:bold:size=9}
-${execi 1 ruby ./scripts/netstat.rb}
+${execi 5 ruby ./scripts/netstat.rb}

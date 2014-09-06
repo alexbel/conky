@@ -7,7 +7,7 @@ minimum_size 300 0
 maximum_width 350
 
 # Update interval in seconds
-update_interval 10
+update_interval 60
 
 
 # stuff after 'TEXT' will be formatted on screen
