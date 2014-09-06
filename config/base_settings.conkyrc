@@ -37,10 +37,16 @@ border_width 0
 draw_graph_borders yes
 
 # Default colors and also border colors
-default_color 303030
+default_color 979797
 #default_shade_color white
 #default_outline_color black
 own_window_colour 262524
+
+# colorN. Predefine a color for use inside TEXT segments.
+# Substitute N by a digit between 0 and 9, inclusively.
+# When specifying the color value in hex, omit the leading hash (#)
+# Light blue
+color0 467f77
 
 # Aligned position on screen, may be top_left, top_right, top_middle, bottom_left, bottom_right, bottom_middle, middle_left, middle_middle, middle_right, or none
 alignment top_left
@@ -75,6 +81,3 @@ use_spacer right
 # but will allow for more text display per variable.
 # The size of this buffer cannot be smaller than the default value of 256 bytes
 text_buffer_size 2048
-
-# Light blue
-color0 467f77

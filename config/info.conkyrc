@@ -1,6 +1,6 @@
 # Gap, in pixels, between right or left border of screen, same as passing -x(-y) at command line
-gap_x 15
-gap_y 7
+gap_x 7
+gap_y 0
 
 # Minimum size of text area
 minimum_size 300 0
@@ -12,9 +12,9 @@ update_interval 10
 
 # stuff after 'TEXT' will be formatted on screen
 TEXT
-${color0}${goto 0}Kernel: ${color grey60}$kernel
-${color0}${goto 0}Uptime: ${color grey60}$uptime
-${color0}${goto 0}Updates available: ${color grey60}${execi 3600 zypper list-updates -t package | grep "v |" | wc -l}
-${color0}${goto 0}Time local: ${color grey60}${execi 30 date +"%H:%M"}
-${goto 32}${color0}Moscow: ${color grey60}${execi 30 TZ=Europe/Moscow date +"%H:%M"}
-${color0}${goto 0}Load: ${color grey60}$loadavg
+${color0}Kernel: $color$kernel
+${color0}Uptime: $color$uptime
+${color0}Updates available: $color${execi 3600 zypper list-updates -t package | grep "v |" | wc -l}
+${color0}Time local: ${color grey60}${execi 30 date +"%H:%M"}
+${goto 37}${color0}Moscow: $color${execi 30 TZ=Europe/Moscow date +"%H:%M"}
+${color0}Load: $color$loadavg

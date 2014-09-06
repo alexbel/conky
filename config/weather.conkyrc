@@ -13,8 +13,8 @@ update_interval 600
 # stuff after 'TEXT' will be formatted on screen
 TEXT
 ${color0}Calendar  ${hr 2}
-${voffset 3}${color grey60}${execpi 3600 VinDSL_Cal_8=`date +%-d`; cal -m | sed -e '1d' -e 's/\<'"$VinDSL_Cal_8"'\>/${color orange}&${color grey60}/'}
+${voffset 3}$color${execpi 3600 VinDSL_Cal_8=`date +%-d`; cal -m | sed -e '1d' -e 's/\<'"$VinDSL_Cal_8"'\>/${color orange}&${color}/'}
 ${color0}Gmail: ${hr 2}
-${color gray60}${goto 20}${execpi 1800 ruby ~/.conky/scripts/gmail.rb} new emails
+$color${goto 20}${execpi 1800 ruby ~/.conky/scripts/gmail.rb} new emails
 
 ${execpi 900 ruby ~/.conky/scripts/weather.rb}

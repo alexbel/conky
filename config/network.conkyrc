@@ -12,21 +12,21 @@ update_interval 3
 
 # stuff after 'TEXT' will be formatted on screen
 TEXT
-${color0}Public IP: ${color grey60}${execi 3600 curl -s http://checkip.dyndns.org/ | awk '/:/ {print $6}' | cut -d "<" -f1 }
-${color0}Gateway IP: ${color grey60}$gw_ip
-${color0}DNS: ${color grey60}$nameserver
-${color0}Wi-fi Network: ${color grey60}${wireless_essid wlp3s0}
-${color0}Wi-fi Ip: ${color grey60}${addr wlp3s0}
-${color0}Signal: ${color grey60}${wireless_link_qual_perc wlp3s0}${goto 95}% ${goto 112}${if_up wlp3s0}${wireless_link_bar wlp3s0}${else}${color0}No wlan0$endif
-${color0}${goto 20}Down speed: ${color grey60}${downspeed wlp3s0} ${goto 200}${color0}Up speed: ${color grey60}${upspeed wlp3s0}
-${color grey60}${downspeedgraph wlp3s0 12,150 303030 00ff00} ${alignr}${color grey60}${upspeedgraph wlp3s0 12,150 303030 ff0000}
-${color0}Total down: ${color grey60}${totaldown wlp3s0} ${goto 180}${color0}Total up: ${color grey60}${totalup wlp3s0}
+${color0}Public IP: ${color}${execi 3600 curl -s http://checkip.dyndns.org/ | awk '/:/ {print $6}' | cut -d "<" -f1 }
+${color0}Gateway IP: $color$gw_ip
+${color0}DNS: $color$nameserver
+${color0}Wi-fi Network: $color${wireless_essid wlp3s0}
+${color0}Wi-fi Ip: $color${addr wlp3s0}
+${color0}Signal: $color${wireless_link_qual_perc wlp3s0}${goto 95}% ${goto 112}${if_up wlp3s0}${wireless_link_bar wlp3s0}${else}${color0}No wlan0$endif
+${color0}${goto 20}Down speed: $color${downspeed wlp3s0} ${goto 200}${color0}Up speed: $color${upspeed wlp3s0}
+$color${downspeedgraph wlp3s0 12,150 303030 00ff00} ${alignr}$color${upspeedgraph wlp3s0 12,150 303030 ff0000}
+${color0}Total down: $color${totaldown wlp3s0} ${goto 180}${color0}Total up: $color${totalup wlp3s0}
 ${color0}Activity:  ${hr 2}
-${color0}Inbound connections: ${color grey60}${tcp_portmon 1 32767 count}
-${color0}Outbound connections: ${color grey60}${tcp_portmon 32768 61000 count}
-${color0}Proto  Foreign Address ${goto 250}Name
-${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 1 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 1 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 1 name}
-${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 2 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 2 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 2 name}
-${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 3 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 3 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 3 name}
-${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 4 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 4 address}${goto 230}${execi 3bash ~/.conky/scripts/netstat.sh 4 name}
-${color grey60} ${execi 3 bash ~/.conky/scripts/netstat.sh 5 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 5 address}${goto 230}${execi 3bash ~/.conky/scripts/netstat.sh 5 name}
+${color0}Inbound connections: $color${tcp_portmon 1 32767 count}
+${color0}Outbound connections: $color${tcp_portmon 32768 61000 count}
+${color0}Proto  Foreign Address ${goto 250}Name${color}${font Liberation Mono:bold:size=9}
+${execi 3 bash ~/.conky/scripts/netstat.sh 1 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 1 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 1 name}
+${execi 3 bash ~/.conky/scripts/netstat.sh 2 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 2 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 2 name}
+${execi 3 bash ~/.conky/scripts/netstat.sh 3 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 3 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 3 name}
+${execi 3 bash ~/.conky/scripts/netstat.sh 4 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 4 address}${goto 230}${execi 3bash ~/.conky/scripts/netstat.sh 4 name}
+${execi 3 bash ~/.conky/scripts/netstat.sh 5 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 5 address}${goto 230}${execi 3bash ~/.conky/scripts/netstat.sh 5 name}
