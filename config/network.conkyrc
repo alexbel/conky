@@ -24,9 +24,5 @@ ${color0}Total down: $color${totaldown wlp3s0} ${goto 180}${color0}Total up: $co
 ${color0}Activity:  ${hr 2}
 ${color0}Inbound connections: $color${tcp_portmon 1 32767 count}
 ${color0}Outbound connections: $color${tcp_portmon 32768 61000 count}
-${color0}Proto  Foreign Address ${goto 250}Name${color}${font Liberation Mono:bold:size=9}
-${execi 3 bash ~/.conky/scripts/netstat.sh 1 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 1 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 1 name}
-${execi 3 bash ~/.conky/scripts/netstat.sh 2 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 2 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 2 name}
-${execi 3 bash ~/.conky/scripts/netstat.sh 3 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 3 address}${goto 230}${execi 3 bash ~/.conky/scripts/netstat.sh 3 name}
-${execi 3 bash ~/.conky/scripts/netstat.sh 4 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 4 address}${goto 230}${execi 3bash ~/.conky/scripts/netstat.sh 4 name}
-${execi 3 bash ~/.conky/scripts/netstat.sh 5 proto}${goto 63}${execi 3 bash ~/.conky/scripts/netstat.sh 5 address}${goto 230}${execi 3bash ~/.conky/scripts/netstat.sh 5 name}
+${color0}Proto  Address ${goto 222}Name${color}${font Liberation Mono:bold:size=9}
+${execi 1 ruby ./scripts/netstat.rb}
