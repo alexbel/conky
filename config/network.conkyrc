@@ -3,7 +3,7 @@ gap_x 1100
 gap_y 0
 
 # Minimum size of text area
-minimum_size 320 0
+minimum_size 320 500
 maximum_width 320
 
 # Update interval in seconds
