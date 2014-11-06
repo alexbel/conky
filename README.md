@@ -9,6 +9,8 @@
 Required:  
   - curl
   - netstat
+  - acpi
+  - sensors
 
 Conky libs:  
   - conky-imlib2
