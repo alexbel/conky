@@ -21,9 +21,9 @@ Gmail:
   gems:  
   - ruby-gmail
   - mime
-  - rest-client
 
 Install gem: gem install gem_name  
 
 Weather:  
+  - wunderground gem
   - api_key from http://www.wunderground.com/weather/api/

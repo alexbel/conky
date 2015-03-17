@@ -1,20 +1,18 @@
-require 'rest-client'
-require 'json'
 require 'yaml'
+require 'wunderground'
 
 city = 'Carrboro'
 state = 'NC'
 secrets = YAML.load_file(ENV['HOME']+'/.conky/secrets.yml')
- # required by producing your own API key from http://www.wunderground.com/weather/api/
-api_key = secrets['wunderground']['api_key']
 
-url = "http://api.wunderground.com/api/#{api_key}/conditions/q/#{state}/#{city}.json"
+ # required by producing your own API key from http://www.wunderground.com/weather/api/
+w = Wunderground.new secrets['wunderground']['api_key']
+
 file = '/tmp/weather.txt'
 
 # current conditions
-res = RestClient.get url
-parsed_json = JSON.parse(res)
-json = parsed_json['current_observation']
+current_conditions = w.conditions_for state, city
+json = current_conditions['current_observation']
 temp       = json['temp_c']
 city       = json['display_location']['city']
 humidity   = json['relative_humidity']
@@ -23,10 +21,8 @@ visibility = json['visibility_km']
 weather    = json['weather']
 
 # forecast
-url = "http://api.wunderground.com/api/#{api_key}/forecast/q/#{state}/#{city}.json"
-res = RestClient.get url
-parsed_json = JSON.parse(res)
-json = parsed_json['forecast']['simpleforecast']['forecastday']
+forecast = w.forecast_for state, city
+json = forecast['forecast']['simpleforecast']['forecastday']
 
 days       = []
 icons      = []
