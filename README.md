@@ -8,7 +8,7 @@
 ### Dependencies
 Required:  
   - curl
-  - netstat
+  - ss
   - acpi
   - sensors
 

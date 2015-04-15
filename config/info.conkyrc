@@ -14,7 +14,7 @@ update_interval 60
 TEXT
 ${color0}Kernel: $color$kernel
 ${color0}Uptime: $color$uptime
-${color0}Updates available: $color${texeci 7000 sudo zypper ref >/dev/null}${execi 7200 zypper list-updates -t package | grep "v |" | wc -l}
+${color0}Updates available: 0
 ${color0}Time local: ${color grey60}${execi 30 date +"%H:%M"}
 ${goto 37}${color0}Moscow: $color${execi 30 TZ=Europe/Moscow date +"%H:%M"}
 ${color0}Load: $color$loadavg
