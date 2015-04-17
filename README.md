@@ -5,6 +5,17 @@
 - rename secrets.yml.example to secrets.yml and put your data in it  
 - run 'ruby starter.rb'
 
+## Autostart
+Kde plasma 5:  
+Create a file `conky.desktop` in `~/.config/autostart` directory and fill it in with the following contents:  
+```
+[Desktop Entry]
+Name=conky
+Exec=cd ~/.conky && ruby starter.rb
+Type=Application
+Terminal=false
+```
+
 ### Dependencies
 Required:  
   - curl
