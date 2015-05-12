@@ -1,9 +1,10 @@
 require 'yaml'
 require 'wunderground'
 
-city = 'Carrboro'
-state = 'NC'
 secrets = YAML.load_file(ENV['HOME']+'/.conky/secrets.yml')
+
+city = secrets['wunderground']['city']
+state = secrets['wunderground']['state']
 
  # required by producing your own API key from http://www.wunderground.com/weather/api/
 w = Wunderground.new secrets['wunderground']['api_key']
