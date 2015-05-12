@@ -13,6 +13,4 @@ update_interval 5
 TEXT
 ${color0}Hard drive  ${hr 2}
 dev${goto 60}write${goto 130}read
-${color}sdb${goto 60}${diskio_write sdb}${goto 130}${diskio_read sdb}${goto 190}${diskiograph sdb 12,147 467f77 303030 -t -l}
-$color0${voffset 5}${goto 85}Free${goto 150}Used${goto 215}Size${goto 290}Used
-${font Liberation Mono:bold:size=9}${execpi 300 ruby ./scripts/storage.rb}
+${execpi 5 ruby ./scripts/hard_drives.rb}
