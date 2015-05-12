@@ -36,5 +36,5 @@ Gmail:
 Install gem: gem install gem_name  
 
 Weather:  
-  - wunderground gem
+  - [wunderground](https://github.com/wnadeau/wunderground) gem
   - api_key from http://www.wunderground.com/weather/api/
