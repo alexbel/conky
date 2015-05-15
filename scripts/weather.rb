@@ -13,6 +13,11 @@ if secrets['wunderground']['unit_of_measurement'].to_s.downcase == 'fahrenheit'
   measurement = 'fahrenheit'
 end
 
+distance_unit = 'km'
+if secrets['wunderground']['system'].to_s.downcase == 'imperial'
+  distance_unit = 'mi'
+end
+
  # required by producing your own API key from http://www.wunderground.com/weather/api/
 w = Wunderground.new secrets['wunderground']['api_key']
 
@@ -25,7 +30,7 @@ temp       = json["temp_#{degree}"]
 city       = json['display_location']['city']
 humidity   = json['relative_humidity']
 feelslike  = json["feelslike_#{degree}"]
-visibility = json['visibility_km']
+visibility = json["visibility_#{distance_unit}"]
 weather    = json['weather']
 
 # forecast
@@ -80,7 +85,7 @@ out << "#{g20}#{c0}Sky #{g130}#{c60}#{weather}\n"
 out << "#{g20}#{c0}Temperature #{g130}#{c60}#{temp} °C\n"
 out << "#{g20}#{c0}Humidity #{g130}#{c60}#{humidity}\n"
 out << "#{g20}#{c0}Feels like #{g130}#{c60}#{feelslike} °C\n"
-out << "#{g20}#{c0}Visibility #{g130}#{c60}#{visibility} km\n"
+out << "#{g20}#{c0}Visibility #{g130}#{c60}#{visibility} #{distance_unit}\n"
 out << "#{g20}#{c60}#{days[0]}${goto 125}#{days[1]}${goto 230}#{days[2]}\n\n"
 out << "#{img_tag(0, 10)}#{img_tag(1, 115)}#{img_tag(2, 220)}\n\n\n"
 out << "${goto 30}#{c60}#{high[0]}/#{low[0]}°#{degree.upcase}${goto 130}#{high[1]}/#{low[1]}°#{degree.upcase}${goto 240}#{high[2]}/#{low[2]}°#{degree.upcase}"
