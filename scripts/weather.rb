@@ -6,6 +6,13 @@ secrets = YAML.load_file(ENV['HOME']+'/.conky/secrets.yml')
 city = secrets['wunderground']['city']
 state = secrets['wunderground']['state']
 
+degree = 'c'
+measurement = 'celsius'
+if secrets['wunderground']['unit_of_measurement'].to_s.downcase == 'fahrenheit'
+  degree = 'f'
+  measurement = 'fahrenheit'
+end
+
  # required by producing your own API key from http://www.wunderground.com/weather/api/
 w = Wunderground.new secrets['wunderground']['api_key']
 
@@ -14,10 +21,10 @@ file = '/tmp/weather.txt'
 # current conditions
 current_conditions = w.conditions_for state, city
 json = current_conditions['current_observation']
-temp       = json['temp_c']
+temp       = json["temp_#{degree}"]
 city       = json['display_location']['city']
 humidity   = json['relative_humidity']
-feelslike  = json['feelslike_c']
+feelslike  = json["feelslike_#{degree}"]
 visibility = json['visibility_km']
 weather    = json['weather']
 
@@ -35,8 +42,8 @@ low        = []
   days       << json[index]['date']['weekday']
   icons      << json[index]['icon']
   conditions << json[index]['conditions']
-  high       << json[index]['high']['celsius']
-  low        << json[index]['low']['celsius']
+  high       << json[index]['high'][measurement]
+  low        << json[index]['low'][measurement]
 end
 
 File.open(file, 'w') do |f|
@@ -76,5 +83,5 @@ out << "#{g20}#{c0}Feels like #{g130}#{c60}#{feelslike} °C\n"
 out << "#{g20}#{c0}Visibility #{g130}#{c60}#{visibility} km\n"
 out << "#{g20}#{c60}#{days[0]}${goto 125}#{days[1]}${goto 230}#{days[2]}\n\n"
 out << "#{img_tag(0, 10)}#{img_tag(1, 115)}#{img_tag(2, 220)}\n\n\n"
-out << "${goto 30}#{c60}#{high[0]}/#{low[0]}°C${goto 130}#{high[1]}/#{low[1]}°C${goto 240}#{high[2]}/#{low[2]}°C"
+out << "${goto 30}#{c60}#{high[0]}/#{low[0]}°#{degree.upcase}${goto 130}#{high[1]}/#{low[1]}°#{degree.upcase}${goto 240}#{high[2]}/#{low[2]}°#{degree.upcase}"
 puts out
