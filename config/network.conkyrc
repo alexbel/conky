@@ -12,7 +12,7 @@ update_interval 3
 
 # stuff after 'TEXT' will be formatted on screen
 TEXT
-${color0}Public IP: ${color}${execi 3600 curl -s http://ifconfig.me}
+${color0}Public IP: ${color}${execi 3600 curl -s http://icanhazip.com}
 ${color0}${execpi 300 ruby ./scripts/network_general_info.rb}
 ${color0}${goto 20}Down speed: $color${downspeed wlp3s0} ${goto 200}${color0}Up speed: $color${upspeed wlp3s0}
 $color${downspeedgraph wlp3s0 12,150 303030 00ff00} ${alignr}$color${upspeedgraph wlp3s0 12,150 303030 ff0000}
