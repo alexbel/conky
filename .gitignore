@@ -3,3 +3,5 @@ secrets.yml
 /sys.conkyrc
 /network.conkyrc
 /weather.conkyrc
+/battery.conkyrc
+/data_storage.conkyrc

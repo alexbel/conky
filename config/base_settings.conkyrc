@@ -1,5 +1,5 @@
 # Boolean value, if true, Conky will be forked to background when started
-background true
+background yes
 
 # Use Xft (anti-aliased font and stuff)
 use_xft yes
@@ -11,10 +11,11 @@ xftalpha 1
 
 # Create own window instead of using desktop (required in nautilus)
 own_window yes
-own_window_transparent yes
 own_window_type normal
-own_window_hints undecorate,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 own_window_argb_visual yes
+
 
 # Use the Xdbe extension? (eliminates flicker)
 # It is highly recommended to use own window with this one so double buffer won't be so big
