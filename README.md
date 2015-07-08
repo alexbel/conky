@@ -16,6 +16,8 @@ Type=Application
 Terminal=false
 ```
 
+### Conky version <= 1.9.0
+
 ### Dependencies
 Required:  
   - curl
