@@ -39,9 +39,6 @@ draw_graph_borders yes
 
 # Default colors and also border colors
 default_color 979797
-#default_shade_color white
-#default_outline_color black
-own_window_colour 262524
 
 # colorN. Predefine a color for use inside TEXT segments.
 # Substitute N by a digit between 0 and 9, inclusively.
