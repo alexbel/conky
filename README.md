@@ -3,7 +3,7 @@
 
 ## Installation
 - rename secrets.yml.example to secrets.yml and put your data in it  
-- run 'ruby starter.rb'
+- run 'ruby starter.rb' or just './starter.rb'
 
 ## Autostart
 Kde plasma 5:  
