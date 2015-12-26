@@ -21,14 +21,7 @@ ${color0}CPU Core 2: $color${freq 2}MHz ${color0} Load: $color${cpu cpu2}%$color
 ${cpugraph cpu2 12,330 303030 467f77}
 ${color0}Name${goto 179}PID${goto 234}CPU%${goto 297}MEM
       Top Cpu$color${font Liberation Mono:bold:size=9}
-${top name 1}${goto 170}${top pid 1}${goto 220}${top cpu 1}${goto 285}${top mem_res 1}
-${top name 2}${goto 170}${top pid 2}${goto 220}${top cpu 2}${goto 285}${top mem_res 2}
-${top name 3}${goto 170}${top pid 3}${goto 220}${top cpu 3}${goto 285}${top mem_res 3}
-${top name 4}${goto 170}${top pid 4}${goto 220}${top cpu 4}${goto 285}${top mem_res 4}
-${top name 5}${goto 170}${top pid 5}${goto 220}${top cpu 5}${goto 285}${top mem_res 5}
-${top name 6}${goto 170}${top pid 6}${goto 220}${top cpu 6}${goto 285}${top mem_res 6}
-${top name 7}${goto 170}${top pid 7}${goto 220}${top cpu 7}${goto 285}${top mem_res 7}
-${top name 8}${goto 170}${top pid 8}${goto 220}${top cpu 8}${goto 285}${top mem_res 8}
+${execpi 5 ruby ./scripts/cpu_usage.rb}
 ${color0}${font Liberation Mono:bold:size=10}      Top Mem$color${font Liberation Mono:bold:size=9}
 ${top_mem name 1}${goto 170}${top_mem pid 1}${goto 220}${top_mem cpu 1}${goto 285}${top_mem mem_res 1}
 ${top_mem name 2}${goto 170}${top_mem pid 2}${goto 220}${top_mem cpu 2}${goto 285}${top_mem mem_res 2}
