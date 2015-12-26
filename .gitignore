@@ -1,7 +1,7 @@
 secrets.yml
-/info.conkyrc
-/sys.conkyrc
-/network.conkyrc
-/weather.conkyrc
-/battery.conkyrc
-/data_storage.conkyrc
+/info.conf
+/sys.conf
+/network.conf
+/weather.conf
+/battery.conf
+/data_storage.conf
