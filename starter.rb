@@ -2,12 +2,13 @@
 class Starter
 
   def initialize
-    @base_settings = File.readlines './config/base_settings.conkyrc'
-    @configs = %w[battery data_storage network info weather sys]
+    @conf_dir = './configs/'
+    @base_settings = File.readlines "#{@conf_dir}base_settings.conf"
+    @configs = %w/sys info battery data_storage network weather/
   end
 
   def run
-    sleep 20
+    #sleep 20
     remove_old_configs
     generate_new_configs
     execute
@@ -15,15 +16,15 @@ class Starter
 
   def remove_old_configs
     @configs.each do |config_name|
-      file = "./#{config_name}.conkyrc"
+      file = "./#{config_name}.conf"
       File.delete(file) if File.exist?(file)
     end
   end
 
   def generate_new_configs
     @configs.each do |config_name|
-      current_config = File.readlines "./config/#{config_name}.conkyrc"
-      file = File.new "#{config_name}.conkyrc", 'w'
+      current_config = File.readlines "#{@conf_dir}#{config_name}.conf"
+      file = File.new "#{config_name}.conf", 'w'
       file.puts(@base_settings + current_config)
       file.close
     end
@@ -31,7 +32,7 @@ class Starter
 
   def execute
     @configs.each do |config_name|
-      system("conky -c ./#{config_name}.conkyrc")
+      system("conky -c ./#{config_name}.conf")
     end
   end
 
