@@ -1,9 +1,12 @@
-## Conky
-<img src='1366x768.png' width='300px'>
+## Conky configuration
+<img src='1366x768.png' width='900px'>
 
 ## Installation
-- rename secrets.yml.example to secrets.yml and put your data in it  
-- run 'ruby starter.rb' or just './starter.rb'
+- Clone repo `git clone https://github.com/alexbel/conky.git ~/.conky`
+- Install dependencies (see below)
+- Install the necessary ruby gems (see below)
+- Rename secrets.yml.example to secrets.yml and put your data in it
+- Run 'ruby starter.rb' or just './starter.rb'
 
 ## Autostart
 Kde plasma 5:  
