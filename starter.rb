@@ -8,7 +8,7 @@ class Starter
   end
 
   def run
-    sleep 20
+    #sleep 20
     remove_old_configs
     generate_new_configs
     execute
