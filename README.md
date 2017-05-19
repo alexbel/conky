@@ -1,5 +1,5 @@
 ## Conky configuration
-<img src='1366x768.png' width='900px'>
+<img src='1920x1080.png' width='900px'>
 
 ## Installation
 - Clone repo `git clone https://github.com/alexbel/conky.git ~/.conky`

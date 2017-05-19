@@ -72,7 +72,7 @@ end
 
 # conky output
 def img_tag(i, x)
-  "${image $HOME/.conky/weather_icons/#{@icons[i]}.png -p #{x},270 -s 75x45}"
+  "${image $HOME/.conky/weather_icons/#{@icons[i]}.png -p #{x},320 -s 75x45}"
 end
 
 g20  = '${goto 20}'
@@ -86,7 +86,7 @@ out << "#{g20}#{c0}Temperature #{g130}#{c60}#{temp} °C\n"
 out << "#{g20}#{c0}Humidity #{g130}#{c60}#{humidity}\n"
 out << "#{g20}#{c0}Feels like #{g130}#{c60}#{feelslike} °C\n"
 out << "#{g20}#{c0}Visibility #{g130}#{c60}#{visibility} #{distance_unit}\n"
-out << "#{g20}#{c60}#{days[0]}${goto 125}#{days[1]}${goto 230}#{days[2]}\n\n"
+out << "#{g20}#{c60}#{days[0]}${goto 130}#{days[1]}${goto 235}#{days[2]}\n\n"
 out << "#{img_tag(0, 10)}#{img_tag(1, 115)}#{img_tag(2, 220)}\n\n\n"
 out << "${goto 30}#{c60}#{high[0]}/#{low[0]}°#{degree.upcase}${goto 130}#{high[1]}/#{low[1]}°#{degree.upcase}${goto 240}#{high[2]}/#{low[2]}°#{degree.upcase}"
 puts out
