@@ -40,8 +40,11 @@ Gmail:
   - ruby-gmail
   - mime
 
-Install gem: gem install gem_name  
-
 Weather:  
   - [wunderground](https://github.com/wnadeau/wunderground) gem
   - api_key from http://www.wunderground.com/weather/api/
+
+### Install gems
+- go to the conky folder (i.e. ~/.conky)
+- `gem install bundler`
+- `bundle install`

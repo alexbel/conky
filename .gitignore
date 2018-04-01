@@ -5,3 +5,4 @@ secrets.yml
 /weather.conf
 /battery.conf
 /data_storage.conf
+/.bundle
