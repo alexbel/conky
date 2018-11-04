@@ -4,7 +4,7 @@
 ## Installation
 - Clone repo `git clone https://github.com/alexbel/conky.git ~/.conky`
 - Install dependencies (see below)
-- Install the necessary ruby gems (see below)
+- Install the necessary ruby gems `bundle install`
 - Rename secrets.yml.example to secrets.yml and put your data in it
 - Run 'ruby starter.rb' or just './starter.rb'
 
@@ -33,16 +33,9 @@ Required:
 Conky libs:  
   - conky-imlib2
 
-Gmail:  
-  - ruby >= 1.9.3
-
-  gems:  
-  - ruby-gmail
-  - mime
-
 Weather:  
-  - [wunderground](https://github.com/wnadeau/wunderground) gem
-  - api_key from http://www.wunderground.com/weather/api/
+- Get key from `https://openweathermap.org/api` and add into `secrets.yml`
+- find your city_id on `https://openweathermap.org` and add into `secrets.yml`
 
 ### Install gems
 - go to the conky folder (i.e. ~/.conky)
