@@ -33,12 +33,23 @@ low        = []
 3.times do |index|
   days << (Date.today + (index + 1)).strftime('%A')
 end
+
+time = Time.now
+day_hour = Time.new(time.year, time.month, time.day, 16).utc.hour
+
 json.each do |row|
-  next if !row['dt_txt'].include?('15:00:00')
+  next if !row['dt_txt'].include?("#{day_hour}:00:00")
+  break if high.count == 3
   icons       << row['weather'][0]['icon']
   conditions  << row['weather'][0]['main']
   high        << row['main']['temp_max'].to_f.round(0)
-  low         << row['main']['temp_min'].to_f.round(0)
+end
+
+night_hour = Time.new(time.year, time.month, time.day, 04).utc.hour
+json.each do |row|
+  next if !row['dt_txt'].include?("#{night_hour}:00:00")
+  break if low.count == 3
+  low << row['main']['temp_min'].to_f.round(0)
 end
 
 @icons = icons
@@ -55,7 +66,7 @@ c60  = '${color gray60}'
 out =  "#{c0}Weather: #{city} ${hr 2}\n"
 out << "#{g20}#{c0}Sky #{g130}#{c60}#{sky}\n"
 out << "#{g20}#{c0}Temperature #{g130}#{c60}#{temp} °C\n"
-out << "#{g20}#{c0}Humidity #{g130}#{c60}#{humidity}\n"
+out << "#{g20}#{c0}Humidity #{g130}#{c60}#{humidity}%\n"
 out << "#{g20}#{c0}Visibility #{g130}#{c60}#{visibility} km\n"
 out << "#{g20}#{c0}#{days[0]}${goto 130}#{days[1]}${goto 235}#{days[2]}\n\n"
 out << "#{img_tag(0, 10)}#{img_tag(1, 115)}#{img_tag(2, 220)}\n\n\n"
