@@ -3,8 +3,8 @@ require 'httpx'
 require 'date'
 
 secrets = YAML.load_file(ENV['HOME']+'/.conky/secrets.yml')
-
 city_id = secrets['weather']['city_id']
+timezone = Time.now.getlocal.strftime('%:z')
 
  # required by producing your own API key from  https://openweathermap.org
 api_key = secrets['weather']['api_key']
@@ -35,7 +35,7 @@ low        = []
 end
 
 time = Time.now
-day_hour = Time.new(time.year, time.month, time.day, 16).utc.hour
+day_hour = Time.new(time.year, time.month, time.day, 17, 0, 0, timezone).utc.hour
 
 json.each do |row|
   next if !row['dt_txt'].include?("#{day_hour}:00:00")
@@ -45,7 +45,7 @@ json.each do |row|
   high        << row['main']['temp_max'].to_f.round(0)
 end
 
-night_hour = Time.new(time.year, time.month, time.day, 04).utc.hour
+night_hour = Time.new(time.year, time.month, time.day, 05, 0, 0, timezone).utc.hour
 json.each do |row|
   next if !row['dt_txt'].include?("#{night_hour}:00:00")
   break if low.count == 3
