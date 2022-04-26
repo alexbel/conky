@@ -4,8 +4,8 @@ physical_cores = `cat /proc/cpuinfo | grep cores | uniq |  awk '{print $4}'`.to_
 physical_cores.times do |index|
   core_index = index + 1
   freq = cpu_freqs[index]
-  string << "${color0}CPU Core #{core_index}: $color #{freq}MHz ${color0} Load: $color${cpu cpu#{core_index}}% $color0${goto 260}Temp: $color${exec sensors | grep 'Core #{index}' | cut -c17-18}°\n"
-  string << "${cpugraph cpu#{core_index} 12,330 303030 467f77}\n"
+  string << "${color0}CPU Core #{core_index}: $color #{freq}MHz ${color0} Load: $color${cpu cpu#{core_index}}%\n"
+  string << "${cpugraph cpu#{core_index} 18,350 303030 467f77}\n"
 end
 
 puts string

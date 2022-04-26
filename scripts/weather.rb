@@ -45,7 +45,7 @@ json.each do |row|
   high        << row['main']['temp_max'].to_f.round(0)
 end
 
-night_hour = Time.new(time.year, time.month, time.day, 04, 0, 0, timezone).utc.hour
+night_hour = Time.new(time.year, time.month, time.day, 05, 0, 0, timezone).utc.hour
 json.each do |row|
   next if !row['dt_txt'].include?("#{night_hour}:00:00")
   break if low.count == 3
@@ -55,20 +55,20 @@ end
 @icons = icons
 # conky output
 def img_tag(i, x)
-  "${image $HOME/.conky/weather_icons/#{@icons[i]}.png -p #{x},300 -s 75x45}"
+  "${image $HOME/.conky/weather_icons/#{@icons[i]}.png -p #{x},350 -s 75x45}"
 end
 
 g20  = '${goto 20}'
-g130 = '${goto 130}'
+g160 = '${goto 160}'
 c0   = '${color0}'
 c60  = '${color gray60}'
 
 out =  "#{c0}Weather: #{city} ${hr 2}\n"
-out << "#{g20}#{c0}Sky #{g130}#{c60}#{sky}\n"
-out << "#{g20}#{c0}Temperature #{g130}#{c60}#{temp} °C\n"
-out << "#{g20}#{c0}Humidity #{g130}#{c60}#{humidity}%\n"
-out << "#{g20}#{c0}Visibility #{g130}#{c60}#{visibility} km\n"
-out << "#{g20}#{c0}#{days[0]}${goto 130}#{days[1]}${goto 235}#{days[2]}\n\n"
-out << "#{img_tag(0, 10)}#{img_tag(1, 115)}#{img_tag(2, 220)}\n\n\n"
-out << "${goto 25}#{c60}#{high[0]}/#{low[0]}°C${goto 140}#{high[1]}/#{low[1]}°C${goto 245}#{high[2]}/#{low[2]}°C"
+out << "#{g20}#{c0}Sky #{g160}#{c60}#{sky}\n"
+out << "#{g20}#{c0}Temperature #{g160}#{c60}#{temp} °C\n"
+out << "#{g20}#{c0}Humidity #{g160}#{c60}#{humidity}%\n"
+out << "#{g20}#{c0}Visibility #{g160}#{c60}#{visibility} km\n"
+out << "#{g20}#{c0}#{days[0]}${goto 180}#{days[1]}${goto 335}#{days[2]}\n\n"
+out << "#{img_tag(0, 20)}#{img_tag(1, 180)}#{img_tag(2, 330)}\n\n\n"
+out << "${goto 30}#{c60}#{high[0]}/#{low[0]}°C${goto 200}#{high[1]}/#{low[1]}°C${goto 350}#{high[2]}/#{low[2]}°C"
 puts out

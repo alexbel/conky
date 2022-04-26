@@ -1,5 +1,6 @@
 ## Conky configuration
-<img src='1920x1080.jpg' width='900px'>
+<img src='3840x2160.png' width='900px'>
+Optimized for `3840x2160`
 
 ## Installation
 - Clone repo `git clone https://github.com/alexbel/conky.git ~/.conky`
@@ -41,3 +42,10 @@ Weather:
 - go to the conky folder (i.e. ~/.conky)
 - `gem install bundler`
 - `bundle install`
+
+### Troubleshooting
+#### Run `pacman -Sy` without password
+Edit `/etc/sudoers` and add:
+```
+your-user ALL = NOPASSWD: /usr/bin/pacman -Sy
+```
