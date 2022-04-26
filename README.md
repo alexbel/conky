@@ -20,10 +20,6 @@ Type=Application
 Terminal=false
 ```
 
-### Conky versions
-- Use `master` branch for conky >= 1.10.0
-- Use `1.9` branch for conky <= 1.9.1
-
 ### Dependencies
 Required:  
   - curl
