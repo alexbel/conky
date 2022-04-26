@@ -7,8 +7,9 @@ def smart_space(item1=nil)
 end
 
 network_lines = %x(ss -ntup)
-network_lines = network_lines.split("\n")[1..10]
+network_lines = network_lines.split("\n")[1..12]
 result = []
+process_to_ip = []
 
 network_lines.each_with_index do |line, index|
   columns = line.split(' ')
@@ -17,6 +18,9 @@ network_lines.each_with_index do |line, index|
   name = columns.last.split('"')[1]
   if protocol && ip_address && name
     str = protocol << '     ' << ip_address << smart_space(ip_address) << name
+    process_ip = "#{name}|#{ip_address}"
+    next if process_to_ip.include?(process_ip)
+    process_to_ip << process_ip
     h = {process_name: name, data: str}
     result << h
   end
