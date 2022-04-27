@@ -7,7 +7,7 @@ def smart_space(item1=nil)
 end
 
 network_lines = %x(ss -ntup)
-network_lines = network_lines.split("\n")[1..12]
+network_lines = network_lines.split("\n")[1..11]
 result = []
 process_to_ip = []
 
