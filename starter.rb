@@ -4,7 +4,7 @@ class Starter
   def initialize
     @conf_dir = './configs/'
     @base_settings = File.readlines "#{@conf_dir}base_settings.conf"
-    @configs = %w/sys info data_storage network weather/
+    @configs = %w/sys info data_storage network weather nvidia/
     if Dir.exist?('/sys/class/power_supply/BAT0')
       @configs << 'battery'
     end
