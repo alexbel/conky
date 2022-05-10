@@ -2,7 +2,7 @@ require 'yaml'
 secrets = YAML.load_file(ENV['HOME']+'/.conky/secrets.yml')
 active_device = secrets['hard_drives']['activity_for']
 
-diskio = "${color}#{active_device}${goto 130}${diskio_write #{active_device}}${goto 240}${diskio_read #{active_device}}${diskiograph #{active_device} 12,160 467f77 303030 -t -l}\n"
+diskio = "${color}#{active_device}${goto 130}${diskio_write #{active_device}}${goto 240}${diskio_read #{active_device}}${goto 335}${diskiograph #{active_device} 14,155 467f77 303030 -t -l}\n"
 
 free_used_title = "$color0${voffset 5}${goto 100}Total${goto 200}Used${goto 300}Free${goto 420}Used"
 
