@@ -2,16 +2,16 @@ GEM
   remote: https://rubygems.org/
   specs:
     http-2-next (0.5.0)
-    httpx (0.18.0)
+    httpx (0.18.7)
       http-2-next (>= 0.4.1)
     mime (0.4.4)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   httpx (~> 0.18.0)
   mime (= 0.4.4)
 
 BUNDLED WITH
-   2.2.24
+   2.3.12
