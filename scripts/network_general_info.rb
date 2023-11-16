@@ -6,9 +6,9 @@ nameservers = `cat /etc/resolv.conf | grep ^nameserver | awk '{print $2}'`.split
 
 output = ''
 output << "${color0}Gateway IP: $color$gw_ip\n"
-output << "${color0}DNS: $color #{nameservers}\n"
+output << "${color0}DNS:$color #{nameservers}\n"
 output << "${color0}Wi-fi Network: $color${wireless_essid #{interface}}\n"
-output << "${color0}Wi-fi Ip: $color${addr #{interface}}\n"
+output << "${color0}Ip Address: $color${addr #{interface}}\n"
 output << "${color0}Signal: $color${wireless_link_qual_perc #{interface}}${goto 120}% ${goto 140}${if_up #{interface}}${voffset 2}${wireless_link_bar 8 #{interface}}${else}${color0}No interface$endif\n"
 output << "${color0}Down speed: $color${downspeed #{interface}} ${goto 270}${color0}Up speed: $color${upspeed #{interface}}\n"
 output << "$color${downspeedgraph #{interface} 12,200 303030 00ff00} ${alignr}$color${upspeedgraph #{interface} 12,200 303030 ff0000}\n"
