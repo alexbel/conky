@@ -1,16 +1,16 @@
 require 'yaml'
-require 'httpx'
 require 'date'
+require 'net/http'
+require 'json'
 
 secrets = YAML.load_file(ENV['HOME']+'/.conky/secrets.yml')
 city_id = secrets['weather']['city_id']
-timezone = Time.now.getlocal.strftime('%:z')
+api_key = secrets['weather']['api_key']
 
  # required by producing your own API key from  https://openweathermap.org
-api_key = secrets['weather']['api_key']
 url = "https://api.openweathermap.org/data/2.5/weather?units=metric&id=#{city_id}&APPID=#{api_key}"
-response = HTTPX.get url
-json = JSON.parse response.body.to_s
+response = Net::HTTP.get URI(url)
+json = JSON.parse response
 
 # current conditions
 temp       = json['main']['temp'].to_f.round(1)
@@ -21,8 +21,8 @@ sky        = json['weather'].first['main']
 
 # forecast
 url = "https://api.openweathermap.org/data/2.5/forecast?units=metric&id=#{city_id}&APPID=#{api_key}"
-response = HTTPX.get url
-json = JSON.parse(response.body.to_s)['list']
+response = Net::HTTP.get URI(url)
+json = JSON.parse response
 
 days       = []
 icons      = []
@@ -34,10 +34,11 @@ low        = []
   days << (Date.today + (index + 1)).strftime('%A')
 end
 
-time = Time.now
-day_hour = Time.new(time.year, time.month, time.day, 16, 0, 0, timezone).utc.hour
+#time = Time.now
+#day_hour = Time.new(time.year, time.month, time.day, 17, 0, 0, timezone).utc.hour
+day_hour = 21
 
-json.each do |row|
+json['list'].each do |row|
   next if !row['dt_txt'].include?("#{day_hour}:00:00")
   break if high.count == 3
   icons       << row['weather'][0]['icon']
@@ -45,8 +46,9 @@ json.each do |row|
   high        << row['main']['temp_max'].to_f.round(0)
 end
 
-night_hour = Time.new(time.year, time.month, time.day, 04, 0, 0, timezone).utc.hour
-json.each do |row|
+#night_hour = Time.new(time.year, time.month, time.day, 05, 0, 0, timezone).utc.hour
+night_hour = 9
+json['list'].each do |row|
   next if !row['dt_txt'].include?("#{night_hour}:00:00")
   break if low.count == 3
   low << row['main']['temp_min'].to_f.round(0)
