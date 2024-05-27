@@ -5,7 +5,6 @@ Optimized for `3840x2160`
 ## Installation
 - Clone repo `git clone https://github.com/alexbel/conky.git ~/.conky`
 - Install dependencies (see below)
-- Install the necessary ruby gems `bundle install`
 - Rename secrets.yml.example to secrets.yml and put your data in it
 - Run 'ruby starter.rb' or just './starter.rb'
 
@@ -33,11 +32,6 @@ Conky libs:
 Weather:  
 - Get key from `https://openweathermap.org/api` and add into `secrets.yml`
 - find your city_id on `https://openweathermap.org` and add into `secrets.yml`
-
-### Install gems
-- go to the conky folder (i.e. ~/.conky)
-- `gem install bundler`
-- `bundle install`
 
 ### Troubleshooting
 #### Run `pacman -Sy` without password
