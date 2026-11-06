@@ -14,4 +14,4 @@ end
 
 puts diskio
 puts free_used_title
-puts '${font Liberation Mono:bold:size=9}' + partitions.inject(:+)
+puts '${font Liberation Mono:bold:size=11}' + partitions.inject(:+)

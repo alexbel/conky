@@ -57,7 +57,7 @@ end
 @icons = icons
 # conky output
 def img_tag(i, x)
-  "${image $HOME/.conky/weather_icons/#{@icons[i]}.png -p #{x},350 -s 75x45}"
+  "${image $HOME/.conky/weather_icons/#{@icons[i]}.png -p #{x},300 -s 75x45}"
 end
 
 g20  = '${goto 20}'
@@ -70,7 +70,8 @@ out << "#{g20}#{c0}Sky #{g160}#{c60}#{sky}\n"
 out << "#{g20}#{c0}Temperature #{g160}#{c60}#{temp} °C\n"
 out << "#{g20}#{c0}Humidity #{g160}#{c60}#{humidity}%\n"
 out << "#{g20}#{c0}Visibility #{g160}#{c60}#{visibility} km\n"
+out << "${voffset 5}"
 out << "#{g20}#{c0}#{days[0]}${goto 180}#{days[1]}${goto 335}#{days[2]}\n\n"
-out << "#{img_tag(0, 20)}#{img_tag(1, 180)}#{img_tag(2, 330)}\n\n\n"
-out << "${goto 30}#{c60}#{high[0]}/#{low[0]}°C${goto 200}#{high[1]}/#{low[1]}°C${goto 350}#{high[2]}/#{low[2]}°C"
+out << "#{img_tag(0, 20)}#{img_tag(1, 170)}#{img_tag(2, 320)}\n\n\n"
+out << "${goto 30}#{c60}#{high[0]}/#{low[0]}°C${goto 190}#{high[1]}/#{low[1]}°C${goto 340}#{high[2]}/#{low[2]}°C"
 puts out
